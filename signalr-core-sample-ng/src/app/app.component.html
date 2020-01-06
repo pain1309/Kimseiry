@@ -1,0 +1,31 @@
+<p-dialog header="Login" [(visible)]="display" modal="true">
+  <span>alice/password</span>
+  <br/>
+  <span>bob/password</span>
+
+  <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+    <div>
+      <input pInputText type="text" placeholder="username" formControlName="username" />
+    </div>
+    <div>
+      <input pInputText type="password" placeholder="password" formControlName="password" />
+    </div>
+    <div>
+      <p-button type="submit" label="Log in" [disabled]="!loginForm.valid"></p-button>
+    </div>
+  </form>
+</p-dialog>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+  <h3>Message:</h3>
+  <input pInputText type="text" formControlName="message" />
+  <p-button type="submit" label="Send" [disabled]="!messageForm.valid"></p-button>
+</form>
+
+<div>
+    <ul>
+      <li *ngFor="let msg of messages">
+        <b>{{ msg.user }}:</b> {{ msg.content }}
+      </li>
+    </ul>
+</div>
